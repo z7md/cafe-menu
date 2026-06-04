@@ -350,7 +350,7 @@ body {
   }
 
   .menu-section {
-    padding: 105px 30px 130px;
+    padding: 80px 30px 130px;
   }
 
   .english-title {
@@ -403,13 +403,13 @@ body {
   }
 
   .nav-links {
-    justify-content: flex-start;
+ justify-content:justify-center; 
     gap: 22px;
     padding-bottom: 6px;
   }
 
   .nav-links button {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .menu-section {
@@ -538,5 +538,6 @@ body {
   .bottom-wave {
     height: 30px;
     background-size: 58px 30px;
+    margin-bottom: 30px;
   }
 }
