@@ -67,7 +67,11 @@ const sections = [
 ];
 
 function getImagePath(imageName) {
-  return imageName.startsWith("/") ? imageName : `/${imageName}`;
+  const cleanName = imageName.startsWith("/")
+    ? imageName.slice(1)
+    : imageName;
+
+  return `${import.meta.env.BASE_URL}${cleanName}`;
 }
 
 function MenuItem({ item }) {
