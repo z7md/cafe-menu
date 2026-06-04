@@ -86,7 +86,7 @@ function MenuItem({ item }) {
       <div className="item-info">
       <span className="name">{item.name}</span>
         <span className="price">
-        <img src="/Saudi_Riyal.svg" alt="ريال" className="riyal-icon" />
+        <img src={getImagePath("Saudi_Riyal.svg")} alt="ريال" className="riyal-icon" />
           {item.price}
 
         </span>
@@ -110,7 +110,7 @@ function MenuSection({ section }) {
 
       <div className="bottom-decoration">
         <div className="bottom-wave"></div>
-        <img src="/silka.png" alt="Silka" className="bottom-logo" />
+        <img src={getImagePath("/silka.png")} alt="Silka" className="bottom-logo" />
       </div>
     </section>
   );
