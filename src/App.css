@@ -1,0 +1,511 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap");
+
+:root {
+  --silka-blue: #9bb7d8;
+  --silka-maroon: #651522;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--silka-blue);
+  color: var(--silka-maroon);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+/* =========================
+   Full Page Slider
+   ========================= */
+
+.fullpage-wrapper {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sections-slider {
+  width: 100%;
+  height: 100vh;
+  transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* =========================
+   Fixed Topbar
+   ========================= */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 60px;
+  background: rgba(155, 183, 216, 0.88);
+  backdrop-filter: blur(10px);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  direction: rtl;
+}
+
+.nav-links button {
+  position: relative;
+
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  color: var(--silka-maroon);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  font-size: 20px;
+  font-weight: 400;
+  transition: 0.25s ease;
+  white-space: nowrap;
+}
+
+.nav-links button:hover {
+  opacity: 0.65;
+  transform: translateY(-2px);
+}
+
+.nav-links button.active-link {
+  font-weight: 600;
+}
+
+.nav-links button.active-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+
+  width: 85%;
+  height: 2px;
+  background: var(--silka-maroon);
+  border-radius: 999px;
+
+  transform: translateX(-50%);
+}
+
+/* =========================
+   Section Layout
+   ========================= */
+
+.menu-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+
+  padding: 115px 80px 155px;
+  background: var(--silka-blue);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.english-title {
+  position: relative;
+  z-index: 2;
+
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -2px;
+
+  color: var(--silka-maroon);
+  transform: scaleX(0.95);
+  transform-origin: left;
+  margin-bottom: 45px;
+
+  text-align: left;
+  direction: ltr;
+}
+
+/* =========================
+   Products Grid - Smaller
+   ========================= */
+
+.items-grid {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 45px 50px;
+  align-items: start;
+
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.menu-item {
+  min-width: 0;
+  text-align: center;
+  color: var(--silka-maroon);
+  transition: 0.25s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-6px);
+}
+
+.product-image {
+  width: 145px;
+  height: 105px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 10px;
+
+  filter: drop-shadow(13px 14px 7px rgba(40, 70, 90, 0.24));
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  direction: rtl;
+  color: var(--silka-maroon);
+}
+
+.name {
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--silka-maroon);
+  line-height: 1.35;
+}
+
+.price {
+  direction: ltr;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--silka-maroon);
+  line-height: 1;
+  letter-spacing: 0.2px;
+  font-variant-numeric: lining-nums;
+}
+
+.riyal-icon {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  display: inline-block;
+
+  filter: brightness(0) saturate(100%) invert(14%) sepia(44%) saturate(2125%)
+    hue-rotate(320deg) brightness(84%) contrast(98%);
+}
+
+/* =========================
+   Bottom Decoration
+   Wave first, logo on RIGHT
+   ========================= */
+
+.bottom-decoration {
+  position: absolute;
+  left: 70px;
+  right: 70px;
+  bottom: 38px;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  gap: 35px;
+
+  pointer-events: none;
+}
+
+.bottom-wave {
+  flex: 1;
+  min-width: 0;
+  height: 42px;
+  opacity: 0.7;
+
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='42' viewBox='0 0 120 42' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 24 C10 6 20 6 30 24 C40 42 50 42 60 24 C70 6 80 6 90 24 C100 42 110 42 120 24' fill='none' stroke='%23651522' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+
+  background-repeat: repeat-x;
+  background-size: 120px 42px;
+  background-position: left center;
+}
+
+.bottom-logo {
+  width: 155px;
+  height: auto;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* =========================
+   iPad Layout
+   Row 1: 3 items
+   Row 2: 4 items
+   ========================= */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .topbar {
+    height: 74px;
+    padding: 0 35px;
+  }
+
+  .nav-links {
+    gap: 28px;
+  }
+
+  .nav-links button {
+    font-size: 22px;
+  }
+
+  .menu-section {
+    padding: 105px 45px 145px;
+  }
+
+  .english-title {
+    font-size: 60px;
+    margin-bottom: 42px;
+  }
+
+  .items-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 42px 22px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: middle;
+
+    max-width: 830px;
+    margin: 0 auto;
+  }
+
+
+
+  .product-image {
+    width: 125px;
+    height: 95px;
+  }
+
+  .item-info {
+    gap: 12px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  .price {
+    direction: ltr;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  
+    font-family: "IBM Plex Sans Arabic", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--silka-maroon);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  .riyal-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .bottom-decoration {
+    left: 45px;
+    right: 45px;
+    bottom: 32px;
+    gap: 28px;
+  }
+
+  .bottom-logo {
+    width: 125px;
+  }
+
+  .bottom-wave {
+    height: 38px;
+    background-size: 110px 38px;
+  }
+}
+
+/* =========================
+   Small Tablets / Large Phones
+   ========================= */
+
+@media (max-width: 850px) {
+  .topbar {
+    height: auto;
+    min-height: 76px;
+    padding: 12px 22px;
+  }
+
+  .nav-links {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: center;
+    gap: 24px;
+    padding: 4px 6px 8px;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links button {
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .menu-section {
+    padding-top: 115px;
+  }
+}
+
+/* =========================
+   Mobile Layout
+   ========================= */
+
+@media (max-width: 600px) {
+  .topbar {
+    min-height: 70px;
+    padding: 10px 14px;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+    gap: 22px;
+    padding-bottom: 6px;
+  }
+
+  .nav-links button {
+    font-size: 16px;
+  }
+
+  .menu-section {
+    padding: 105px 18px 118px;
+  }
+
+  .english-title {
+    font-size: 46px;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+
+  .items-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px 10px;
+
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .menu-item {
+    grid-column: auto !important;
+  }
+
+  .product-image {
+    width: 105px;
+    height: 80px;
+    margin-bottom: 8px;
+  }
+
+  .item-info {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .name {
+    font-size: 15px;
+  }
+
+
+  .riyal-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .bottom-decoration {
+    left: 18px;
+    right: 18px;
+    bottom: 26px;
+    gap: 14px;
+  }
+
+  .bottom-logo {
+    width: 82px;
+  }
+
+  .bottom-wave {
+    height: 30px;
+    background-size: 90px 30px;
+  }
+}
+
+/* =========================
+   Very Small Mobile
+   ========================= */
+
+@media (max-width: 390px) {
+  .menu-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .english-title {
+    font-size: 40px;
+  }
+
+  .items-grid {
+    gap: 30px 8px;
+  }
+
+  .product-image {
+    width: 95px;
+    height: 72px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+
+  .riyal-icon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .bottom-logo {
+    width: 72px;
+  }
+}
