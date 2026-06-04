@@ -2,41 +2,41 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 const sweets = [
-  { name: "ثردد بيري", price: "23.00", imageName: "7.png" },
+  { name: "تردد بيري", price: "23.00", imageName: "7.png" },
   { name: "لاير تشيز كيك", price: "27.00", imageName: "13.png" },
   { name: "فانيليا تارت", price: "25.00", imageName: "6.png" },
   { name: "بابكا سيلكا", price: "17.00", imageName: "12.png" },
   { name: "تيراميسو", price: "25.00", imageName: "8.png" },
   { name: "تردد شوكلت", price: "25.00", imageName: "9.png" },
-  { name: "فلوينق شوكلت", price: "25.00", imageName: "11.png" },
+  { name: "فلمبونق شوكلت", price: "25.00", imageName: "11.png" },
 ];
 
 const hotDrinks = [
   { name: "لاتيه", price: "22.00", imageName: "1.png" },
   { name: "كابتشينو", price: "22.00", imageName: "1.png" },
-  { name: "فلات وايت", price: "22.00", imageName: "1.png" },
+  { name: "فلات وايت", price: "22.00", imageName: "2.png" },
   { name: "كورتادو", price: "21.00", imageName: "2.png" },
-  { name: "امريكانو حار", price: "17.00", imageName: "2.png" },
+  { name: "امريكانو حار", price: "17.00", imageName: "1.png" },
   { name: "سبانش حار", price: "23.00", imageName: "2.png" },
-  { name: "اسبريسو", price: "14.00", imageName: "2.png" },
+  { name: "اسبريسو", price: "14.00", imageName: "1.png" },
   { name: "شوكولاتة ساخنة", price: "23.00", imageName: "1.png" },
 ];
 
 const coldDrinks = [
-  { name: "ايس لاتيه", price: "23.00", imageName: "/1.png"  },
-  { name: "ايس سبانش لاتيه", price: "24.00", imageName: "/1.png" },
+  { name: "ايس لاتيه", price: "23.00", imageName: "1.png" },
+  { name: "ايس سبانش لاتيه", price: "24.00", imageName: "2.png" },
   { name: "ايس امريكانو", price: "20.00", imageName: "2.png" },
-  { name: "ايس الفرّيدو", price: "24.00", imageName: "2.png" },
+  { name: "ايس الفرّيدو", price: "24.00", imageName: "1.png" },
   { name: "ايس ماتشا", price: "25.00", imageName: "1.png" },
   { name: "مياه غازية", price: "6.00", imageName: "2.png" },
-  { name: "ايس كركديه", price: "25.00", imageName: "1.png" },
+  { name: "ايس كركديه", price: "25.00", imageName: "2.png" },
 ];
 
 const drepsDrinks = [
-  { name: "قهوة اليوم بارد", price: "23.00", imageName: "/1.png" },
-  { name: "قهوة اليوم حار", price: "24.00", imageName: "/2.png" },
-  { name: "قهوة مقطرة بارد", price: "20.00", imageName: "/1.png" },
-  { name: "قهوة مقطرة حارة", price: "24.00", imageName: "/2.png" },
+  { name: "قهوة اليوم بارد", price: "23.00", imageName: "1.png" },
+  { name: "قهوة اليوم حار", price: "24.00", imageName: "2.png" },
+  { name: "قهوة مقطرة بارد", price: "20.00", imageName: "1.png" },
+  { name: "قهوة مقطرة حارة", price: "24.00", imageName: "2.png" },
 ];
 
 const sections = [
@@ -66,11 +66,8 @@ const sections = [
   },
 ];
 
-function getImagePath(imageName) {
-  const cleanName = imageName.startsWith("/")
-    ? imageName.slice(1)
-    : imageName;
-
+function getPublicPath(fileName) {
+  const cleanName = fileName.startsWith("/") ? fileName.slice(1) : fileName;
   return `${import.meta.env.BASE_URL}${cleanName}`;
 }
 
@@ -78,39 +75,49 @@ function MenuItem({ item }) {
   return (
     <div className="menu-item">
       <img
-        src={getImagePath(item.imageName)}
+        src={getPublicPath(item.imageName)}
         alt={item.name}
         className="product-image"
       />
 
       <div className="item-info">
-      <span className="name">{item.name}</span>
         <span className="price">
-        <img src={getImagePath("Saudi_Riyal.svg")} alt="ريال" className="riyal-icon" />
+          <img
+            src={getPublicPath("Saudi_Riyal.svg")}
+            alt="ريال"
+            className="riyal-icon"
+          />
           {item.price}
-
         </span>
 
-
+        <span className="name">{item.name}</span>
       </div>
     </div>
   );
 }
 
 function MenuSection({ section }) {
+  const itemCount = section.items.length;
+
   return (
     <section className="menu-section">
       <h2 className="english-title">{section.title}</h2>
 
-      <div className="items-grid">
-        {section.items.map((item, index) => (
-          <MenuItem key={index} item={item} />
-        ))}
+      <div className="grid-area">
+        <div className={`items-grid items-count-${itemCount}`}>
+          {section.items.map((item, index) => (
+            <MenuItem key={index} item={item} />
+          ))}
+        </div>
       </div>
 
       <div className="bottom-decoration">
         <div className="bottom-wave"></div>
-        <img src={getImagePath("/silka.png")} alt="Silka" className="bottom-logo" />
+        <img
+          src={getPublicPath("silka.png")}
+          alt="Silka"
+          className="bottom-logo"
+        />
       </div>
     </section>
   );

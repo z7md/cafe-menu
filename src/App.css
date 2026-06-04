@@ -50,23 +50,24 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 120px;
+  height: 74px;
   z-index: 1000;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 0 60px;
+  padding: 0 35px;
   background: rgba(155, 183, 216, 0.88);
   backdrop-filter: blur(10px);
+  border: none;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 42px;
+  gap: 28px;
   direction: rtl;
 }
 
@@ -80,7 +81,7 @@ body {
   outline: none;
   cursor: pointer;
 
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   transition: 0.25s ease;
   white-space: nowrap;
@@ -101,7 +102,7 @@ body {
   left: 50%;
   bottom: -8px;
 
-  width: 85%;
+  width: 70%;
   height: 2px;
   background: var(--silka-maroon);
   border-radius: 999px;
@@ -119,7 +120,7 @@ body {
   height: 100vh;
   min-height: 100vh;
 
-  padding: 115px 80px 155px;
+  padding: 105px 45px 145px;
   background: var(--silka-blue);
   overflow: hidden;
 
@@ -133,7 +134,7 @@ body {
 
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
-  font-size: 72px;
+  font-size: 60px;
   font-weight: 400;
   line-height: 1;
   letter-spacing: -2px;
@@ -141,28 +142,74 @@ body {
   color: var(--silka-maroon);
   transform: scaleX(0.95);
   transform-origin: left;
-  margin-bottom: 45px;
+
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 20px;
 
   text-align: left;
   direction: ltr;
 }
 
-/* =========================
-   Products Grid - Smaller
-   ========================= */
-
-.items-grid {
+/* This area makes the grid use the available section space */
+.grid-area {
   position: relative;
   z-index: 2;
 
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 45px 50px;
-  align-items: start;
-
+  flex: 1;
   width: 100%;
-  max-width: 980px;
+  max-width: 950px;
   margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-bottom: 25px;
+}
+
+/* =========================
+   Products Grid
+   ========================= */
+
+.items-grid {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+/* 4 items = 2 columns × 2 rows */
+.items-count-4 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 520px;
+  gap: 55px 95px;
+}
+
+/* 7 items = 4 columns, last row centered visually */
+.items-count-7 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 850px;
+  gap: 55px 60px;
+}
+
+.items-count-7 .menu-item:nth-child(5) {
+  transform: translateX(50%);
+}
+
+.items-count-7 .menu-item:nth-child(6) {
+  transform: translateX(50%);
+}
+
+.items-count-7 .menu-item:nth-child(7) {
+  transform: translateX(50%);
+}
+
+/* 8 items = 4 columns × 2 rows */
+.items-count-8 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 850px;
+  gap: 55px 60px;
 }
 
 .menu-item {
@@ -176,9 +223,15 @@ body {
   transform: translateY(-6px);
 }
 
+.items-count-7 .menu-item:nth-child(5):hover,
+.items-count-7 .menu-item:nth-child(6):hover,
+.items-count-7 .menu-item:nth-child(7):hover {
+  transform: translateX(50%) translateY(-6px);
+}
+
 .product-image {
-  width: 145px;
-  height: 105px;
+  width: 125px;
+  height: 95px;
   object-fit: contain;
   display: block;
   margin: 0 auto 10px;
@@ -190,14 +243,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 12px;
   direction: rtl;
   color: var(--silka-maroon);
 }
 
 .name {
   font-family: "IBM Plex Sans Arabic", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--silka-maroon);
   line-height: 1.35;
@@ -211,7 +264,7 @@ body {
   gap: 5px;
 
   font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
   color: var(--silka-maroon);
   line-height: 1;
@@ -220,8 +273,8 @@ body {
 }
 
 .riyal-icon {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
   display: inline-block;
 
@@ -231,19 +284,18 @@ body {
 
 /* =========================
    Bottom Decoration
-   Wave first, logo on RIGHT
    ========================= */
 
 .bottom-decoration {
   position: absolute;
-  left: 70px;
-  right: 70px;
-  bottom: 38px;
+  left: 45px;
+  right: 45px;
+  bottom: 32px;
   z-index: 2;
 
   display: flex;
   align-items: center;
-  gap: 35px;
+  gap: 28px;
 
   pointer-events: none;
 }
@@ -251,111 +303,21 @@ body {
 .bottom-wave {
   flex: 1;
   min-width: 0;
-  height: 42px;
-  opacity: 0.7;
+  height: 46px;
+  opacity: 0.75;
 
-  background-image: url("data:image/svg+xml,%3Csvg width='120' height='42' viewBox='0 0 120 42' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 24 C10 6 20 6 30 24 C40 42 50 42 60 24 C70 6 80 6 90 24 C100 42 110 42 120 24' fill='none' stroke='%23651522' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='86' height='46' viewBox='0 0 86 46' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 31 C7 8 22 8 29 31 C36 54 50 54 57 31 C64 8 79 8 86 31' fill='none' stroke='%23651522' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   background-repeat: repeat-x;
-  background-size: 120px 42px;
+  background-size: 86px 46px;
   background-position: left center;
 }
 
 .bottom-logo {
-  width: 155px;
+  width: 125px;
   height: auto;
   flex-shrink: 0;
   display: block;
-}
-
-/* =========================
-   iPad Layout
-   Row 1: 3 items
-   Row 2: 4 items
-   ========================= */
-
-@media (min-width: 601px) and (max-width: 1024px) {
-  .topbar {
-    height: 74px;
-    padding: 0 35px;
-  }
-
-  .nav-links {
-    gap: 28px;
-  }
-
-  .nav-links button {
-    font-size: 22px;
-  }
-
-  .menu-section {
-    padding: 105px 45px 145px;
-  }
-
-  .english-title {
-    font-size: 60px;
-    margin-bottom: 42px;
-  }
-
-  .items-grid {
-    grid-template-columns: repeat(12, 1fr);
-    gap: 42px 22px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    align-items: middle;
-
-    max-width: 830px;
-    margin: 0 auto;
-  }
-
-
-
-  .product-image {
-    width: 125px;
-    height: 95px;
-  }
-
-  .item-info {
-    gap: 12px;
-  }
-
-  .name {
-    font-size: 16px;
-  }
-
-  .price {
-    direction: ltr;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-  
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--silka-maroon);
-    line-height: 1;
-    letter-spacing: 0;
-  }
-  .riyal-icon {
-    width: 13px;
-    height: 13px;
-  }
-
-  .bottom-decoration {
-    left: 45px;
-    right: 45px;
-    bottom: 32px;
-    gap: 28px;
-  }
-
-  .bottom-logo {
-    width: 125px;
-  }
-
-  .bottom-wave {
-    height: 38px;
-    background-size: 110px 38px;
-  }
 }
 
 /* =========================
@@ -388,7 +350,45 @@ body {
   }
 
   .menu-section {
-    padding-top: 115px;
+    padding: 105px 30px 130px;
+  }
+
+  .english-title {
+    font-size: 54px;
+    max-width: 760px;
+  }
+
+  .grid-area {
+    max-width: 760px;
+  }
+
+  .items-count-4 {
+    max-width: 480px;
+    gap: 45px 75px;
+  }
+
+  .items-count-7,
+  .items-count-8 {
+    max-width: 760px;
+    gap: 45px 35px;
+  }
+
+  .product-image {
+    width: 115px;
+    height: 88px;
+  }
+
+  .name {
+    font-size: 15px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .riyal-icon {
+    width: 15px;
+    height: 15px;
   }
 }
 
@@ -403,61 +403,81 @@ body {
   }
 
   .nav-links {
-    justify-content:justify-center; 
+    justify-content: flex-start;
     gap: 22px;
     padding-bottom: 6px;
   }
 
   .nav-links button {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .menu-section {
-    padding: 80px 18px 118px;
+    padding: 105px 18px 112px;
   }
 
   .english-title {
-    font-size: 46px;
+    font-size: 42px;
     letter-spacing: -1px;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
 
-  .items-grid {
+  .grid-area {
+    max-width: 390px;
+    padding-bottom: 15px;
+  }
+
+  .items-grid,
+  .items-count-4,
+  .items-count-7,
+  .items-count-8 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 34px 10px;
-    max-width: 320px;
-    margin: 0 auto;
+    max-width: 390px;
+    gap: 28px 8px;
   }
 
-  .menu-item {
-    grid-column: auto !important;
+  .items-count-7 .menu-item:nth-child(5),
+  .items-count-7 .menu-item:nth-child(6),
+  .items-count-7 .menu-item:nth-child(7) {
+    transform: none;
+  }
+
+  .items-count-7 .menu-item:nth-child(5):hover,
+  .items-count-7 .menu-item:nth-child(6):hover,
+  .items-count-7 .menu-item:nth-child(7):hover {
+    transform: translateY(-6px);
   }
 
   .product-image {
-    width: 105px;
-    height: 80px;
-    margin-bottom: 8px;
+    width: 82px;
+    height: 64px;
+    margin-bottom: 6px;
   }
 
   .item-info {
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
   }
 
   .name {
-    font-size: 15px;
+    font-size: 12.5px;
+    line-height: 1.25;
   }
 
+  .price {
+    font-size: 13.5px;
+    gap: 4px;
+  }
 
   .riyal-icon {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
   }
 
   .bottom-decoration {
     left: 18px;
     right: 18px;
-    bottom: 26px;
+    bottom: 24px;
     gap: 14px;
   }
 
@@ -466,9 +486,8 @@ body {
   }
 
   .bottom-wave {
-    height: 30px;
-    background-size: 90px 30px;
-    margin-bottom: 30px;
+    height: 34px;
+    background-size: 64px 34px;
   }
 }
 
@@ -483,29 +502,41 @@ body {
   }
 
   .english-title {
-    font-size: 40px;
+    font-size: 38px;
   }
 
-  .items-grid {
-    gap: 30px 8px;
+  .items-grid,
+  .items-count-4,
+  .items-count-7,
+  .items-count-8 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px 6px;
   }
 
   .product-image {
-    width: 95px;
-    height: 72px;
+    width: 72px;
+    height: 56px;
   }
 
   .name {
-    font-size: 14px;
+    font-size: 11.5px;
   }
 
+  .price {
+    font-size: 12.5px;
+  }
 
   .riyal-icon {
-    width: 11px;
-    height: 11px;
+    width: 9px;
+    height: 9px;
   }
 
   .bottom-logo {
     width: 72px;
+  }
+
+  .bottom-wave {
+    height: 30px;
+    background-size: 58px 30px;
   }
 }
