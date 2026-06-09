@@ -2,41 +2,171 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 const sweets = [
-  { name: "تردد بيري", price: "23.00", imageName: "7.png" },
-  { name: "لاير تشيز كيك", price: "27.00", imageName: "13.png" },
-  { name: "فانيليا تارت", price: "25.00", imageName: "6.png" },
-  { name: "بابكا سيلكا", price: "17.00", imageName: "12.png" },
-  { name: "تيراميسو", price: "25.00", imageName: "8.png" },
-  { name: "تردد شوكلت", price: "25.00", imageName: "9.png" },
-  { name: "فلمبونق شوكلت", price: "25.00", imageName: "11.png" },
+  {
+    name: "تردد بيري",
+    price: "23.00",
+    imageName: "7.png",
+    description: "حلا بارد بطبقات ناعمة ونكهة بيري منعشة.",
+  },
+  {
+    name: "لاير تشيز كيك",
+    price: "27.00",
+    imageName: "13.png",
+    description: "تشيز كيك بطبقات غنية وقوام كريمي ناعم.",
+  },
+  {
+    name: "فانيليا تارت",
+    price: "25.00",
+    imageName: "6.png",
+    description: "تارت فانيليا ناعم بطعم خفيف ومميز.",
+  },
+  {
+    name: "بابكا سيلكا",
+    price: "17.00",
+    imageName: "12.png",
+    description: "بابكا محضّرة بطبقات غنية ونكهة سيلكا الخاصة.",
+  },
+  {
+    name: "تيراميسو",
+    price: "25.00",
+    imageName: "8.png",
+    description: "حلا إيطالي كلاسيكي بطبقات القهوة والكريمة.",
+  },
+  {
+    name: "تردد شوكلت",
+    price: "25.00",
+    imageName: "9.png",
+    description: "حلا شوكولاتة غني بطعم عميق وقوام ناعم.",
+  },
+  {
+    name: "فلمبونق شوكلت",
+    price: "25.00",
+    imageName: "11.png",
+    description: "حلا شوكولاتة مميز بطبقات لذيذة وقوام غني.",
+  },
 ];
 
 const hotDrinks = [
-  { name: "لاتيه", price: "22.00", imageName: "1.png" },
-  { name: "كابتشينو", price: "22.00", imageName: "1.png" },
-  { name: "فلات وايت", price: "22.00", imageName: "2.png" },
-  { name: "كورتادو", price: "21.00", imageName: "2.png" },
-  { name: "امريكانو حار", price: "17.00", imageName: "1.png" },
-  { name: "سبانش حار", price: "23.00", imageName: "2.png" },
-  { name: "اسبريسو", price: "14.00", imageName: "1.png" },
-  { name: "شوكولاتة ساخنة", price: "23.00", imageName: "1.png" },
+  {
+    name: "لاتيه",
+    price: "22.00",
+    imageName: "1.png",
+    description: "قهوة إسبريسو مع حليب مبخر وقوام ناعم.",
+  },
+  {
+    name: "كابتشينو",
+    price: "22.00",
+    imageName: "1.png",
+    description: "قهوة بالحليب مع رغوة كثيفة ومتوازنة.",
+  },
+  {
+    name: "فلات وايت",
+    price: "22.00",
+    imageName: "1.png",
+    description: "قهوة مركزة مع حليب ناعم وكمية رغوة خفيفة.",
+  },
+  {
+    name: "كورتادو",
+    price: "21.00",
+    imageName: "1.png",
+    description: "إسبريسو ممزوج بكمية متوازنة من الحليب.",
+  },
+  {
+    name: "امريكانو حار",
+    price: "17.00",
+    imageName: "1.png",
+    description: "قهوة سوداء ساخنة بطعم واضح وخفيف.",
+  },
+  {
+    name: "سبانش حار",
+    price: "23.00",
+    imageName: "1.png",
+    description: "قهوة بالحليب المحلى بطعم غني وناعم.",
+  },
+  {
+    name: "اسبريسو",
+    price: "14.00",
+    imageName: "1.png",
+    description: "قهوة مركزة بطعم قوي وحجم صغير.",
+  },
+  {
+    name: "شوكولاتة ساخنة",
+    price: "23.00",
+    imageName: "1.png",
+    description: "مشروب شوكولاتة دافئ بقوام كريمي غني.",
+  },
 ];
 
 const coldDrinks = [
-  { name: "ايس لاتيه", price: "23.00", imageName: "1.png" },
-  { name: "ايس سبانش لاتيه", price: "24.00", imageName: "2.png" },
-  { name: "ايس امريكانو", price: "20.00", imageName: "2.png" },
-  { name: "ايس الفرّيدو", price: "24.00", imageName: "1.png" },
-  { name: "ايس ماتشا", price: "25.00", imageName: "1.png" },
-  { name: "مياه غازية", price: "6.00", imageName: "2.png" },
-  { name: "ايس كركديه", price: "25.00", imageName: "2.png" },
+  {
+    name: "ايس لاتيه",
+    price: "23.00",
+    imageName: "1.png",
+    description: "قهوة باردة بالحليب بطعم منعش وناعم.",
+  },
+  {
+    name: "ايس سبانش لاتيه",
+    price: "24.00",
+    imageName: "1.png",
+    description: "قهوة باردة بالحليب المحلى ونكهة غنية.",
+  },
+  {
+    name: "ايس امريكانو",
+    price: "20.00",
+    imageName: "1.png",
+    description: "قهوة سوداء باردة بطعم قوي ومنعش.",
+  },
+  {
+    name: "ايس الفرّيدو",
+    price: "24.00",
+    imageName: "1.png",
+    description: "مشروب قهوة بارد بقوام كريمي ورغوة ناعمة.",
+  },
+  {
+    name: "ايس ماتشا",
+    price: "25.00",
+    imageName: "1.png",
+    description: "مشروب ماتشا بارد بطعم ناعم ومنعش.",
+  },
+  {
+    name: "مياه غازية",
+    price: "6.00",
+    imageName: "1.png",
+    description: "مياه غازية منعشة وخفيفة.",
+  },
+  {
+    name: "ايس كركديه",
+    price: "25.00",
+    imageName: "1.png",
+    description: "مشروب كركديه بارد بطعم منعش ولون مميز.",
+  },
 ];
 
 const drepsDrinks = [
-  { name: "قهوة اليوم بارد", price: "23.00", imageName: "1.png" },
-  { name: "قهوة اليوم حار", price: "24.00", imageName: "2.png" },
-  { name: "قهوة مقطرة بارد", price: "20.00", imageName: "1.png" },
-  { name: "قهوة مقطرة حارة", price: "24.00", imageName: "2.png" },
+  {
+    name: "قهوة اليوم بارد",
+    price: "23.00",
+    imageName: "1.png",
+    description: "قهوة اليوم محضّرة باردة بطعم متوازن ومنعش.",
+  },
+  {
+    name: "قهوة اليوم حار",
+    price: "24.00",
+    imageName: "2.png",
+    description: "قهوة اليوم الساخنة من حبوب مختارة.",
+  },
+  {
+    name: "قهوة مقطرة بارد",
+    price: "20.00",
+    imageName: "1.png",
+    description: "قهوة مقطرة باردة بطعم ناعم وواضح.",
+  },
+  {
+    name: "قهوة مقطرة حارة",
+    price: "24.00",
+    imageName: "2.png",
+    description: "قهوة مقطرة ساخنة بطريقة تحضير متقنة.",
+  },
 ];
 
 const sections = [
@@ -71,9 +201,9 @@ function getPublicPath(fileName) {
   return `${import.meta.env.BASE_URL}${cleanName}`;
 }
 
-function MenuItem({ item }) {
+function MenuItem({ item, onSelect }) {
   return (
-    <div className="menu-item">
+    <button className="menu-item" onClick={() => onSelect(item)}>
       <img
         src={getPublicPath(item.imageName)}
         alt={item.name}
@@ -81,6 +211,8 @@ function MenuItem({ item }) {
       />
 
       <div className="item-info">
+
+      <span className="name">{item.name}</span>
         <span className="price">
           <img
             src={getPublicPath("Saudi_Riyal.svg")}
@@ -90,35 +222,79 @@ function MenuItem({ item }) {
           {item.price}
         </span>
 
-        <span className="name">{item.name}</span>
       </div>
-    </div>
+    </button>
   );
 }
 
-function MenuSection({ section }) {
+function MenuSection({ section, selectedItem, setSelectedItem }) {
   const itemCount = section.items.length;
 
   return (
     <section className="menu-section">
-      <h2 className="english-title">{section.title}</h2>
+      <div className={`section-content ${selectedItem ? "is-detail" : ""}`}>
+        {!selectedItem ? (
+          <div className="grid-view">
+            <h2 className="english-title">{section.title}</h2>
 
-      <div className="grid-area">
-        <div className={`items-grid items-count-${itemCount}`}>
-          {section.items.map((item, index) => (
-            <MenuItem key={index} item={item} />
-          ))}
-        </div>
+            <div className="grid-area">
+              <div className={`items-grid items-count-${itemCount}`}>
+                {section.items.map((item, index) => (
+                  <MenuItem
+                    key={index}
+                    item={item}
+                    onSelect={setSelectedItem}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="item-detail-view">
+            <button
+              className="back-button"
+              onClick={() => setSelectedItem(null)}
+            >
+              رجوع
+            </button>
+
+            <img
+              src={getPublicPath(selectedItem.imageName)}
+              alt={selectedItem.name}
+              className="detail-image"
+            />
+
+            <h2 className="detail-name">{selectedItem.name}</h2>
+
+            <p className="detail-description">
+              {selectedItem.description || "وصف المنتج غير متوفر حالياً."}
+            </p>
+
+            <div className="detail-price">
+              <img
+                src={getPublicPath("Saudi_Riyal.svg")}
+                alt="ريال"
+                className="detail-riyal-icon"
+              />
+              <span>{selectedItem.price}</span>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="bottom-decoration">
-        <div className="bottom-wave"></div>
-        <img
-          src={getPublicPath("silka.png")}
-          alt="Silka"
-          className="bottom-logo"
-        />
-      </div>
+  <img
+    src={getPublicPath("wave.png")}
+    alt="Wave"
+    className="bottom-wave-image"
+  />
+
+  <img
+    src={getPublicPath("silka.png")}
+    alt="Silka"
+    className="bottom-logo"
+  />
+</div>
     </section>
   );
 }
@@ -126,10 +302,12 @@ function MenuSection({ section }) {
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const goToSection = (index) => {
     if (index < 0 || index >= sections.length || isAnimating) return;
 
+    setSelectedItem(null);
     setActiveIndex(index);
     setIsAnimating(true);
 
@@ -144,6 +322,11 @@ function App() {
 
       if (isAnimating) return;
 
+      if (selectedItem) {
+        setSelectedItem(null);
+        return;
+      }
+
       if (event.deltaY > 0) {
         goToSection(activeIndex + 1);
       } else {
@@ -153,6 +336,18 @@ function App() {
 
     const handleKeyDown = (event) => {
       if (isAnimating) return;
+
+      if (selectedItem) {
+        if (
+          event.key === "ArrowDown" ||
+          event.key === "ArrowUp" ||
+          event.key === "Escape"
+        ) {
+          setSelectedItem(null);
+        }
+
+        return;
+      }
 
       if (event.key === "ArrowDown") {
         goToSection(activeIndex + 1);
@@ -170,7 +365,7 @@ function App() {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeIndex, isAnimating]);
+  }, [activeIndex, isAnimating, selectedItem]);
 
   useEffect(() => {
     let startY = 0;
@@ -187,6 +382,11 @@ function App() {
 
       if (Math.abs(difference) < 50) return;
 
+      if (selectedItem) {
+        setSelectedItem(null);
+        return;
+      }
+
       if (difference > 0) {
         goToSection(activeIndex + 1);
       } else {
@@ -201,7 +401,7 @@ function App() {
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [activeIndex, isAnimating]);
+  }, [activeIndex, isAnimating, selectedItem]);
 
   return (
     <>
@@ -224,8 +424,13 @@ function App() {
           className="sections-slider"
           style={{ transform: `translateY(-${activeIndex * 100}vh)` }}
         >
-          {sections.map((section) => (
-            <MenuSection key={section.id} section={section} />
+          {sections.map((section, index) => (
+            <MenuSection
+              key={section.id}
+              section={section}
+              selectedItem={index === activeIndex ? selectedItem : null}
+              setSelectedItem={setSelectedItem}
+            />
           ))}
         </div>
       </main>
