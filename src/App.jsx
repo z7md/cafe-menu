@@ -3,22 +3,10 @@ import "./App.css";
 
 const sweets = [
   {
-    name: "تردد بيري",
-    price: "23.00",
-    imageName: "7.png",
-    description: "حلا بارد بطبقات ناعمة ونكهة بيري منعشة.",
-  },
-  {
     name: "لاير تشيز كيك",
     price: "27.00",
     imageName: "13.png",
     description: "تشيز كيك بطبقات غنية وقوام كريمي ناعم.",
-  },
-  {
-    name: "فانيليا تارت",
-    price: "25.00",
-    imageName: "6.png",
-    description: "تارت فانيليا ناعم بطعم خفيف ومميز.",
   },
   {
     name: "بابكا سيلكا",
@@ -44,7 +32,20 @@ const sweets = [
     imageName: "11.png",
     description: "حلا شوكولاتة مميز بطبقات لذيذة وقوام غني.",
   },
-];
+  {
+    name: "توفي تارت",
+    price: "27.00",
+    imageName: "13.png",
+    description: "تشيز كيك بطبقات غنية وقوام كريمي ناعم.",
+  },
+  {
+    name: "توفي تارت",
+    price: "27.00",
+    imageName: "14.png",
+    description: "تشيز كيك بطبقات غنية وقوام كريمي ناعم.",
+    new: true,
+  },
+].sort((a, b) => Number(Boolean(b.new)) - Number(Boolean(a.new)));
 
 const hotDrinks = [
   {
@@ -203,27 +204,31 @@ function getPublicPath(fileName) {
 
 function MenuItem({ item, onSelect }) {
   return (
-    <button className="menu-item" onClick={() => onSelect(item)}>
+<button
+  className={`menu-item ${item.new ? "is-new" : ""}`}
+  onClick={() => onSelect(item)}
+>
+  {item.new && <span className="new-label">New</span>}
+
+  <img
+    src={getPublicPath(item.imageName)}
+    alt={item.name}
+    className="product-image"
+  />
+
+  <div className="item-info">
+    <span className="name">{item.name}</span>
+
+    <span className="price">
       <img
-        src={getPublicPath(item.imageName)}
-        alt={item.name}
-        className="product-image"
+        src={getPublicPath("Saudi_Riyal.svg")}
+        alt="ريال"
+        className="riyal-icon"
       />
-
-      <div className="item-info">
-
-      <span className="name">{item.name}</span>
-        <span className="price">
-          <img
-            src={getPublicPath("Saudi_Riyal.svg")}
-            alt="ريال"
-            className="riyal-icon"
-          />
-          {item.price}
-        </span>
-
-      </div>
-    </button>
+      {item.price}
+    </span>
+  </div>
+</button>
   );
 }
 

@@ -226,7 +226,7 @@ body {
 }
 
 .menu-item:hover {
-  transform: translateY(-6px);
+    transform: translateY(-6px);
 }
 
 .items-count-7 .menu-item:nth-child(5):hover,
@@ -236,8 +236,8 @@ body {
 }
 
 .product-image {
-  width: 155px;
-  height: 120px;
+  width: 200px;
+  height: 140px;
   object-fit: contain;
   display: block;
   margin: 0 auto 10px;
@@ -393,8 +393,8 @@ justify-content: center;
   }
 
   .product-image {
-    width: 155px;
-    height: 120px;
+    width: 200px;
+    height: 150px;
     object-fit: contain;
     display: block;
     margin: 0 auto 10px;
@@ -473,9 +473,59 @@ justify-content: center;
   }
 
   .product-image {
-    width: 95px;
-    height: 75px;
+    width: 150px;
+    height: 90px;
     margin-bottom: 6px;
+  }
+  .menu-item {
+    position: relative;
+    overflow: visible;
+  
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  
+    isolation: isolate;
+  }
+  
+
+  .new-label {
+    position: absolute;
+    top: -50px;
+    right: 0%;
+    transform: translateX(50%);
+    z-index: 20;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    min-width: 36px;
+    padding: 4px 12px;
+  
+    background-color: var(--silka-maroon) !important;
+    color: var(--silka-blue) !important;
+  
+    border: 1.5px solid var(--silka-maroon);
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+  
+    box-shadow: 0 6px 14px rgba(101, 21, 34, 0.22);
+    pointer-events: none;
+  }
+
+  @media (max-width: 600px) {
+    .new-label {
+      top: -14px;
+      padding: 2px 8px;
+      font-size: 10px;
+    }
   }
 
 
@@ -1057,6 +1107,11 @@ justify-content: center;
 }
 
 @media (max-width: 600px) {
+  .new-label {
+    top: -14px;
+    padding: 2px 8px;
+    font-size: 10px;
+  }
   .item-detail-view {
     justify-content: center;
     padding-bottom: 35px;
@@ -1094,5 +1149,47 @@ justify-content: center;
   .detail-riyal-icon {
     width: 22px;
     height: 22px;
+  }
+}
+.menu-item.is-new .new-label {
+  position: absolute !important;
+  
+  top: -18px !important;
+  left: 18px !important;
+  right: auto !important;
+  z-index: 9999 !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-width: 50px !important;
+  height: 16px !important;
+  padding: 7px 7px !important;
+
+  background: #651522 !important;
+  color: #9bb7d8 !important;
+
+  border: 1px solid #651522 !important;
+  border-radius: 999px !important;
+
+  font-family: "Cormorant Garamond", serif !important;;
+  font-style: italic !important;;
+  font-size: 20px !important;
+  font-weight: 1000 !important;
+  line-height: 1 !important;
+
+  box-shadow: 0 4px 10px rgba(101, 21, 34, 0.18) !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 600px) {
+  .menu-item.is-new .new-label {
+    top: -13px !important;
+    left: 10px !important;
+    min-width: 28px !important;
+    height: 14px !important;
+    padding: 0 6px !important;
+    font-size: 8px !important;
   }
 }
